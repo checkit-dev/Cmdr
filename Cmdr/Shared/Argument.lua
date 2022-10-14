@@ -54,7 +54,7 @@ end
 
 function Argument:GetDefaultAutocomplete()
 	if self.Type.Autocomplete then
-		local strings, options = self.Type.Autocomplete(self:TransformSegment(""))
+		local strings, options = self.Type.Autocomplete(self:TransformSegment(""), self)
 		return strings, options or {}
 	end
 
@@ -179,7 +179,7 @@ function Argument:Validate(isFinal)
 	if self.Type.Validate or self.Type.ValidateOnce then
 		for i = 1, #self.TransformedValues do
 			if self.Type.Validate then
-				local valid, errorText = self.Type.Validate(self:GetTransformedValue(i))
+				local valid, errorText = self.Type.Validate(self:GetTransformedValue(i), self)
 
 				if not valid then
 					return valid, errorText or "Invalid value"
@@ -187,7 +187,7 @@ function Argument:Validate(isFinal)
 			end
 
 			if isFinal and self.Type.ValidateOnce then
-				local validOnce, errorTextOnce = self.Type.ValidateOnce(self:GetTransformedValue(i))
+				local validOnce, errorTextOnce = self.Type.ValidateOnce(self:GetTransformedValue(i), self)
 
 				if not validOnce then
 					return validOnce, errorTextOnce
@@ -204,7 +204,7 @@ end
 --- Gets a list of all possible values that could match based on the current value.
 function Argument:GetAutocomplete()
 	if self.Type.Autocomplete then
-		return self.Type.Autocomplete(self:GetTransformedValue(#self.TransformedValues))
+		return self.Type.Autocomplete(self:GetTransformedValue(#self.TransformedValues), self)
 	else
 		return {}
 	end
