@@ -1,7 +1,7 @@
 [package]
 name = "ulferno/cmdr"
 description = "Do not use unless you know what you're doing. Port of evaera/Cmdr for Check it Containment."
-version = "1.9.0-fix-bug"
+version = "0.0.1"
 license = "MIT"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
