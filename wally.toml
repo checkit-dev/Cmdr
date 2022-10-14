@@ -1,6 +1,6 @@
 [package]
-name = "evaera/cmdr"
-description = "Extensible command console for Roblox developers"
+name = "ulferno/cmdr"
+description = "Do not use unless you know what you're doing. Port of evaera/Cmdr for Check it Containment."
 version = "1.9.0"
 license = "MIT"
 registry = "https://github.com/UpliftGames/wally-index"
